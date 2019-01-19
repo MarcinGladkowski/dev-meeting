@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AppProductTitleComponent } from './app-product-title/app-product-title.component';
 import { AppProductListComponent } from './app-product-list/app-product-list.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { AppProductListComponent } from './app-product-list/app-product-list.com
     AppProductListComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
