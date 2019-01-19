@@ -11,8 +11,8 @@ export class AppProductListComponent implements OnInit {
 
   searchInput = new FormControl('');
 
-  @Input() products: IProduct[];
-  private backupProducts: IProduct[];
+  @Input() products;
+  private backupProducts;
 
   constructor() { }
 
@@ -20,11 +20,12 @@ export class AppProductListComponent implements OnInit {
     this.searchInput.valueChanges.subscribe((value: string) => {
       this.find(value);
     });
+
     this.backupProducts = this.products;
   }
 
   filter(name: string) {
-    this.products = this.products.filter((product) => product.brand === name);
+    this.products = this.products.filter((product) => product.name === name);
   }
 
   filterByInput(event: any) {

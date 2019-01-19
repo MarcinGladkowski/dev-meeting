@@ -10,10 +10,5 @@
   <input type="text" [formControl]="searchInput">
 </div>
 
-<p>Button filters:</p>
-<div *ngFor="let car of products" style="display: inline">
-  <button (click)="filter(car.brand)">Show {{ car.brand }}</button>
-</div>
-
-<app-product-title *ngFor="let car of products" [product]="car"></app-product-title>
+<app-product-title *ngFor="let product of products; index as i" [data]="product" [index]="i + 1"></app-product-title>
 
