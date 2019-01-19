@@ -8,7 +8,8 @@ import {IProduct} from '../app.component';
 })
 export class AppProductTitleComponent implements OnInit {
 
-  @Input() product: IProduct;
+  @Input() data;
+  @Input() index;
 
   constructor() { }
 
