@@ -1,10 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import {AppComponent, ProductsRepository} from './app.component';
-import { AppProductTitleComponent } from './app-product-title/app-product-title.component';
-import { AppProductListComponent } from './app-product-list/app-product-list.component';
+import {AppComponent} from './app.component';
+import {AppProductTitleComponent} from './app-product-title/app-product-title.component';
+import {AppProductListComponent} from './app-product-list/app-product-list.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {ProductsRepository} from './services/ProductsRepository';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import {ReactiveFormsModule} from '@angular/forms';
   ],
   imports: [
     BrowserModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [ProductsRepository],
   bootstrap: [AppComponent]
