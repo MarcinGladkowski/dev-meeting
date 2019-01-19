@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-interface IProduct {
+export interface IProduct {
   brand: string;
   model: string;
   promotion: boolean;
@@ -15,7 +15,7 @@ export class AppComponent {
   public products: IProduct[] = [
     {brand: 'Honda', model: 'Civic', promotion: false},
     {brand: 'Porsche', model: '911', promotion: true},
-    {brand: 'Ferrari',  model: 'Diablo', promotion: false},
+    {brand: 'Ferrari',  model: 'F50', promotion: false},
   ];
   public promotionProducts = this.products.filter((car) =>  car.promotion === true );
 }
