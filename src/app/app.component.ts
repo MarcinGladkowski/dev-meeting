@@ -1,20 +1,9 @@
-import {Component, Injectable, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ProductsRepository} from './services/ProductsRepository';
 
 export interface IProduct {
-  brand: string;
-  model: string;
-  promotion: boolean;
-}
-
-@Injectable()
-export class ProductsRepository {
-  getProducts(): IProduct[] {
-    return [
-      {brand: 'Honda', model: 'Civic', promotion: false},
-      {brand: 'Porsche', model: '911', promotion: true},
-      {brand: 'Ferrari',  model: 'F50', promotion: false},
-    ];
-  }
+  name: string;
+  price: number;
 }
 
 @Component({
@@ -24,14 +13,13 @@ export class ProductsRepository {
 })
 export class AppComponent implements OnInit {
 
-  public products: IProduct[];
-  private promotionProducts: IProduct[];
+  public products;
 
-  constructor(private productRepository: ProductsRepository) {
-    this.products = productRepository.getProducts();
-  }
+  constructor(private productRepository: ProductsRepository) {}
 
   ngOnInit() {
-    this.promotionProducts = this.products.filter((car) =>  car.promotion === true );
+    this.productRepository.getProducts().subscribe((data) => {
+      this.products = data;
+    });
   }
 }
