@@ -1,4 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {IProduct} from '../app.component';
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-product-list',
@@ -7,11 +9,45 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class AppProductListComponent implements OnInit {
 
-  @Input() products: Array<Object>;
+  searchInput = new FormControl('');
+
+  @Input() products: IProduct[];
+  private backupProducts: IProduct[];
 
   constructor() { }
 
   ngOnInit() {
+    this.searchInput.valueChanges.subscribe((value: string) => {
+      this.find(value);
+    });
+    this.backupProducts = this.products;
   }
 
+  filter(name: string) {
+    this.products = this.products.filter((product) => product.brand === name);
+  }
+
+  filterByInput(event: any) {
+    this.find(event.target.value);
+  }
+
+  private find(value: string) {
+    const filtered = this.products.filter((product) => {
+      const props = Object.keys(product);
+      let find = false;
+      for (const prop of props) {
+        if (product[prop] === value) {
+          find = true;
+          return find;
+        }
+      }
+    });
+
+    if (filtered.length > 0) {
+      this.products = filtered;
+    }
+    if (value.length === 0) {
+      this.products = this.backupProducts;
+    }
+  }
 }

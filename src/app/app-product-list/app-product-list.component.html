@@ -1,3 +1,19 @@
 <strong>Products:</strong>
+
+<div>
+  <label>Filter (by event):</label>
+  <input (keyup)="filterByInput($event)">
+</div>
+
+<div>
+  <label>Filter (by formControl):</label>
+  <input type="text" [formControl]="searchInput">
+</div>
+
+<p>Button filters:</p>
+<div *ngFor="let car of products" style="display: inline">
+  <button (click)="filter(car.brand)">Show {{ car.brand }}</button>
+</div>
+
 <app-product-title *ngFor="let car of products" [product]="car"></app-product-title>
 
