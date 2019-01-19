@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppComponent } from './app.component';
+import {AppComponent, ProductsRepository} from './app.component';
 import { AppProductTitleComponent } from './app-product-title/app-product-title.component';
 import { AppProductListComponent } from './app-product-list/app-product-list.component';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -16,7 +16,7 @@ import {ReactiveFormsModule} from '@angular/forms';
     BrowserModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [ProductsRepository],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
